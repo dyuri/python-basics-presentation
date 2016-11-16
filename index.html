@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.7: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>What is Python?</title>
+<meta name="author" content="Gyuri Horak" />
+<meta name="date" content="2011-05-27" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 6253 2010-03-02 00:24:53Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: left }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/default/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>What is Python?</h1>
+<h2>© Gyuri, euedge.com</h2>
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">What is Python?</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Gyuri Horak</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+  <td>2011-05-27, 2016-11-11 (OMG, 5.5 years...)</td></tr>
+</tbody>
+</table>
+<!-- Definitions of interpreted text roles (classes) for S5/HTML data. -->
+<!-- This data file has been placed in the public domain. -->
+<!-- Colours
+======= -->
+<!-- Text Sizes
+========== -->
+<!-- Display in Slides (Presentation Mode) Only
+========================================== -->
+<!-- Display in Outline Mode Only
+============================ -->
+<!-- Display in Print Only
+===================== -->
+<!-- Display in Handout Mode Only
+============================ -->
+<!-- Incremental Display
+=================== -->
+<!-- container: handout
+
+Python basics presentation -->
+
+</div>
+<div class="slide" id="why-python">
+<h1>Why Python?</h1>
+<img alt="images/snake.jpg" class="align-center" src="images/snake.jpg" />
+</div>
+<div class="slide" id="id1">
+<h1>Why Python!</h1>
+<img alt="images/bunny.jpg" class="align-center" src="images/bunny.jpg" />
+<p class="handout">Monty Python</p>
+</div>
+<div class="slide" id="history">
+<h1>History</h1>
+<ul>
+<li><p class="first">1989, Guido van Rossum, <em>BDFL</em></p>
+<p class="handout">BDFL: benevolent dictator for life</p>
+<ul class="handout simple">
+<li>successor of ABC</li>
+<li>capable of exception handling</li>
+</ul>
+</li>
+</ul>
+<ul class="incremental simple">
+<li>2000, Python 2<ul class="handout">
+<li>garbage collector</li>
+<li>unicode support</li>
+<li>community-backed development process</li>
+</ul>
+</li>
+</ul>
+<ul class="incremental simple">
+<li>2008, Python 3 <del>(not yet widely used)</del></li>
+</ul>
+<ul class="incremental simple">
+<li>2016, Python 2 is still there</li>
+</ul>
+</div>
+<div class="slide" id="id2">
+<h1>What is Python?</h1>
+<ul class="incremental">
+<li><p class="first">open source</p>
+</li>
+<li><p class="first">object-oriented</p>
+<p class="handout">Everything is an object.</p>
+</li>
+<li><p class="first">structured</p>
+<p class="handout">You don't need to define any class if you don't want to.</p>
+<p class="handout">So both o-o and structured programming are supported, you can even mix these techniques.</p>
+</li>
+<li><p class="first">a bit functional programming, AOP, metaprogramming</p>
+<p class="handout">Like list comprehensions: <tt class="docutils literal">sqs = <span class="pre">[x**2</span> for x in range(0, 10)]</tt></p>
+<p class="handout">New classes can be created runtime, methods can be easily replaced (monkey-patching)...</p>
+</li>
+<li><p class="first">strongly, dynamic typed, <em>duck typing</em></p>
+</li>
+<li><p class="first">memory management (reference counting and cycle-detecting gc in CPython)</p>
+</li>
+</ul>
+</div>
+<div class="slide" id="where-can-i-use-it">
+<h1>Where can I use it?</h1>
+<ul class="incremental simple">
+<li>CPython<ul>
+<li><em>reference</em> implementation</li>
+<li>wide range of C modules</li>
+<li>GIL</li>
+<li>Stackless, Unladen Swallow</li>
+</ul>
+</li>
+<li>Jython<ul>
+<li>Python on JVM</li>
+</ul>
+</li>
+<li>IronPython<ul>
+<li>Python on .NET</li>
+</ul>
+</li>
+<li>PyPy<ul>
+<li>Python in Python</li>
+<li>uses JIT, focuses on speed</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="who-uses-it">
+<h1>Who uses it?</h1>
+<ul class="simple">
+<li>Google (search, Youtube, GAE)</li>
+<li>Yahoo (maps, groups)</li>
+<li>Mozilla (addons website)</li>
+<li>Instagram, Dropbox, Reddit, Pinterest, Spotify...</li>
+<li>Video games (Battlefield 2, Crystal Space 3D engine, Civilization 4, ...)</li>
+<li>Movies (Industrial Light &amp; Magic, Walt Disney, Blender, ...)</li>
+<li>Science (NASA, National Weather Service, ...)</li>
+<li>...</li>
+</ul>
+</div>
+<div class="slide" id="the-zen-of-python">
+<h1>The Zen of Python</h1>
+<pre class="literal-block">
+&gt;&gt;&gt; import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+...
+</pre>
+</div>
+<div class="slide" id="how-does-it-look-like">
+<h1>How does it look like?</h1>
+<ul class="incremental simple">
+<li><strong>Indentation</strong>, no semicolon</li>
+<li>Style guide: PEP-8</li>
+<li>Docstrings: PEP-257, reST: PEP-287</li>
+</ul>
+<pre class="small literal-block">
+def hello(name=&quot;World&quot;):
+  &quot;&quot;&quot;Says hello to `name`
+
+  name -- the name to greet (default &quot;World&quot;)
+
+  &quot;&quot;&quot;
+
+  if name is &quot;Janos&quot;:
+    print(&quot;...hi!&quot;)
+  else:
+    print(&quot;Hello %s!&quot; % name);
+  # Python 2 - print statement: print &quot;Hello %s!&quot; % name
+</pre>
+</div>
+<div class="slide" id="data-types">
+<h1>Data types</h1>
+<ul class="incremental simple">
+<li>None</li>
+<li>bool (True/False)</li>
+<li>int, float, complex, Fraction [int, long, float, complex]</li>
+<li>bytes, str [str, unicode] (!)</li>
+<li>list</li>
+<li>tuple</li>
+<li>dict</li>
+<li>set, frozenset</li>
+<li>...</li>
+</ul>
+</div>
+<div class="slide" id="flow-control-statements-if">
+<h1>Flow control statements - if</h1>
+<pre class="literal-block">
+if a &gt; b:
+  pass
+elif b &lt; a:
+  print(&quot;b&lt;a&quot;)
+else:
+  print(&quot;b=a&quot;)
+</pre>
+<p><tt class="docutils literal">pass</tt> is an empty statement, it does nothing.</p>
+<p>No <tt class="docutils literal">switch ... case</tt>, but you can have as much <tt class="docutils literal">elif</tt> as you want. There's no <tt class="docutils literal">a = b ? c : d</tt> operator neither, but you can use <tt class="docutils literal">if</tt> in the following way:</p>
+<pre class="literal-block">
+a = c if b else d
+</pre>
+</div>
+<div class="slide" id="flow-control-statements-while">
+<h1>Flow control statements - while</h1>
+<pre class="literal-block">
+while a &lt; b:
+  a += 1
+</pre>
+</div>
+<div class="slide" id="flow-control-statements-for">
+<h1>Flow control statements - for</h1>
+<pre class="literal-block">
+for x in l:
+  print(x)
+</pre>
+<p>It's not the conventional <tt class="docutils literal">for</tt>, it's a <tt class="docutils literal">foreach</tt>, <tt class="docutils literal">l</tt> has to be an <em>iterable</em>.</p>
+<p class="handout">Iterable objects are capable of returning its members one at a time, like <em>iterators</em> or <em>generators</em>.</p>
+<p>It's easy to simulate the conventional behavior with the <tt class="docutils literal">range()</tt> function, but <strong>do not</strong> do the following:</p>
+<pre class="literal-block">
+for i in range(0, 10):
+  print(l[i])
+</pre>
+</div>
+<div class="slide" id="break-continue-else">
+<h1>break, continue, else</h1>
+<ul class="simple">
+<li><tt class="docutils literal">break</tt> and <tt class="docutils literal">continue</tt> work as usual</li>
+<li>you can define <tt class="docutils literal">else</tt> block for <tt class="docutils literal">for</tt> and <tt class="docutils literal">while</tt> loops, they will be executed when the loop terminates normally</li>
+</ul>
+<pre class="literal-block">
+for n in range(2, 100):
+  for x in range(2, n):
+    if n % x == 0:
+      print(&quot;%d == %d * %d&quot; % (n, x, n/x))
+      break
+  else:
+    print(&quot;%d is a prime number&quot; % n)
+</pre>
+</div>
+<div class="slide" id="exception-handling">
+<h1>Exception handling</h1>
+<pre class="literal-block">
+try:
+  result = x / y
+except ZeroDivisionError as e:
+  print(&quot;y should not be 0!&quot;)
+except:
+  traceback.print_exc()
+else:
+  print(&quot;x / y =&quot;, result)
+finally:
+  print(&quot;we're in finally block&quot;)
+</pre>
+</div>
+<div class="slide" id="functions">
+<h1>Functions</h1>
+<pre class="literal-block">
+def fname(*args, **kwargs):
+  # function body
+  return returnvalue
+</pre>
+<p>No function/method overloading, but argument list can vary:</p>
+<pre class="small literal-block">
+def example(a, b=12, c=False):
+  return b if c else a
+
+&gt;&gt;&gt; example(42)
+42
+&gt;&gt;&gt; example(1, 20)
+1
+&gt;&gt;&gt; example(1, 2, True)
+2
+&gt;&gt;&gt; example(1, c=True)
+12
+</pre>
+</div>
+<div class="slide" id="classes">
+<h1>Classes</h1>
+<pre class="literal-block">
+class MyClass(object):
+
+  a = 42
+
+  def say_hello(self, name=&quot;World&quot;):
+    print(&quot;Hello %s!&quot; % name)
+    return self.a
+
+  def __init__(self, a = None):
+    if a:
+      self.a = a
+
+&gt;&gt;&gt; i = MyClass(1)
+&gt;&gt;&gt; x = i.say_hello(&quot;Everyone&quot;)
+Hello Everyone!
+&gt;&gt;&gt; x
+1
+</pre>
+<ul class="handout">
+<li><p class="first">no <tt class="docutils literal">private</tt> attributes/methods (_, __)</p>
+</li>
+<li><p class="first">methods are bound to instances:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sh = a.say_hello
+&gt;&gt;&gt; sh
+&lt;bound method MyClass.say_hello of &lt;...(a)...&gt;&gt;
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="inheritance">
+<h1>Inheritance</h1>
+<ul class="simple">
+<li><tt class="docutils literal">class A</tt> (old) &lt;=&gt; <tt class="docutils literal">class A(object)</tt> (new, py3 default)</li>
+<li>Don't use the old way, esp. not when considering multiple inheritance.</li>
+</ul>
+<pre class="small literal-block">
+class MyClass(BC1, BC2, BC3):
+
+  def __init__(self):
+    if wrongway:
+      BC1.__init__(self)
+      BC2.__init__(self)
+      BC3.__init__(self)
+    else:
+      super(MyClass, self).__init__()
+</pre>
+<ul class="simple">
+<li>method lookup order is well defined (BC1, BC1 bases, BC2, BC2 bases, ...)</li>
+</ul>
+</div>
+<div class="slide" id="modules-packages">
+<h1>Modules, packages</h1>
+<ul class="simple">
+<li>Module = file</li>
+<li>Package = directory containing <tt class="docutils literal">__init__.py</tt></li>
+</ul>
+<p>Importing a module/package:</p>
+<pre class="literal-block">
+import os # the whole os package
+import os.path # the os.path module
+# the os.path.join function
+import os.path.join as pathjoin
+# everything imported into the current namespace
+from sys import * # do not do this!
+</pre>
+</div>
+<div class="slide" id="python-3">
+<h1>Python 3</h1>
+<ul class="simple">
+<li>some backward incompatible changes:<ul>
+<li><tt class="docutils literal">print</tt> statement -&gt; <tt class="docutils literal">print()</tt> function</li>
+<li><tt class="docutils literal"><span class="pre">b&quot;...&quot;</span></tt> for bytes, <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt> for (unicode) strings</li>
+<li><tt class="docutils literal">1/2 = 0.5</tt></li>
+<li><em>classic</em> classes removed</li>
+<li>int/long -&gt; int</li>
+<li>... lot of smaller changes/improvemnets</li>
+</ul>
+</li>
+<li>libraries migrate quite slowly</li>
+</ul>
+</div>
+<div class="slide" id="questions">
+<h1>Questions?</h1>
+</div>
+<div class="slide" id="thanks">
+<h1>Thanks!</h1>
+</div>
+</div>
+</body>
+</html>

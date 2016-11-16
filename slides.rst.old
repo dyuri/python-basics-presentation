@@ -1,0 +1,381 @@
+.. include:: <s5defs.txt>
+
+======================================
+What is Python?
+======================================
+
+:Author: Gyuri Horak
+:Date: $Date: 2011-05-27 14:00:00 +0200 $
+
+.. container: handout
+
+  Python basics presentation
+
+.. |copy| unicode:: U+00A9
+
+.. footer:: |copy| Gyuri, euedge.com
+
+Why Python?
+===========
+
+.. image:: images/snake.jpg
+   :align: center
+
+Why Python!
+===========
+
+.. image:: images/bunny.jpg
+   :align: center
+
+.. class:: handout
+
+  Monty Python
+
+History
+=======
+
+* 1989, Guido van Rossum, *BDFL*
+
+  .. class:: handout
+
+    BDFL: benevolent dictator for life
+
+    * successor of ABC
+    * capable of exception handling
+
+.. class:: incremental
+
+* 2000, Python 2
+
+  .. class:: handout
+
+  * garbage collector
+  * unicode support
+  * community-backed development process
+
+.. class:: incremental
+
+* 2008, Python 3 (not yet widely used)
+
+What is Python?
+===============
+
+.. class:: incremental
+
+* open source
+
+* object-oriented
+
+  .. class:: handout
+
+    Everything is an object.
+
+* structured
+
+  .. class:: handout
+
+    You don't need to define any class if you don't want to.
+
+    So both o-o and structured programming are supported, you can even mix these techniques.
+
+* a bit functional programming, AOP, metaprogramming
+
+  .. class:: handout
+
+    Like list comprehensions: ``sqs = [x**2 for x in range(0, 10)]``
+
+    New classes can be created runtime, methods can be easily replaced (monkey-patching)...
+
+* dynamic typed, *duck typing*
+* memory management (reference counting and cycle-detecting gc)
+
+Where can I use it?
+===================
+
+.. class:: incremental
+
+* CPython
+
+  - *reference* implementation
+  - wide range of C modules
+  - Stackless, Unladen Swallow
+
+* Jython
+
+  - Python on JVM
+
+* IronPython
+
+  - Python on .NET
+
+* PyPy
+
+  - Python in Python
+  - uses JIT, focuses on speed
+
+Who uses it?
+============
+
+* Google (search, Youtube, GAE)
+* Yahoo (maps, groups)
+* Mozilla (addons website)
+* Video games (Battlefield 2, Crystal Space 3D engine, Civilization 4, ...)
+* Movies (Industrial Light & Magic, Walt Disney, Blender, ...)
+* Science (NASA, National Weather Service, ...)
+* ...
+
+The Zen of Python
+=================
+
+:: 
+
+  >>> import this
+  The Zen of Python, by Tim Peters
+
+  Beautiful is better than ugly.
+  Explicit is better than implicit.
+  Simple is better than complex.
+  Complex is better than complicated.
+  Flat is better than nested.
+  Sparse is better than dense.
+  Readability counts.
+  ...
+
+How does it look like?
+======================
+
+.. class:: incremental
+
+  * **Indentation**, no semicolon
+  * Style guide: PEP-8
+  * Docstrings: PEP-257, reST: PEP-287
+
+.. class:: small
+
+  ::
+
+    def hello(name="World"):
+      """Says hello to `name`
+
+      name -- the name to greet (default "World")
+
+      """
+
+      if name is "Janos":
+        print "...hi!"
+      else:
+        print "Hello %s!" % name
+      # Python 3: print statement -> print() function
+
+Data types
+==========
+
+.. class:: incremental
+
+  * None
+  * bool (True/False)
+  * int, long, float, complex [int, float, complex, Fraction]
+  * str, unicode [bytes, str] (!)
+  * list
+  * tuple
+  * dict
+  * set, frozenset
+  * ...
+
+Flow control statements - if
+============================
+
+::
+
+  if a > b:
+    pass
+  elif b < a:
+    print "b<a"
+  else:
+    print "b=a"
+
+``pass`` is an empty statement, it does nothing.
+
+No ``switch ... case``, but you can have as much ``elif`` as you want. There's no ``a = b ? c : d`` operator neither, but you can use ``if`` in the following way::
+
+  a = c if b else d
+
+Flow control statements - while
+===============================
+
+::
+
+  while a < b:
+    a += 1
+
+Flow control statements - for
+=============================
+
+::
+
+  for x in l:
+    print x
+
+It's not the conventional ``for``, it's a ``foreach``, ``l`` has to be an *iterable*.
+
+.. class:: handout
+
+  Iterable objects are capable of returning its members one at a time, like *iterators* or *generators*.
+
+It's easy to simulate the conventional behavior with the ``range()`` function, but **do not** do the following:
+
+::
+
+  for i in range(0, 10):
+    print l[i]
+
+break, continue, else
+=====================
+
+* ``break`` and ``continue`` work as usual
+* you can define ``else`` block for ``for`` and ``while`` loops, they will be executed when the loop terminates normally
+
+::
+
+  for n in range(2, 100):
+    for x in range(2, n):
+      if n % x == 0:
+        print "%d == %d * %d" % (n, x, n/x)
+        break
+    else:
+      print "%d is a prime number" % n
+
+Exception handling
+==================
+
+::
+
+  try:
+    result = x / y
+  except ZeroDivisionError as e:
+    print "y should not be 0!"
+  except:
+    traceback.print_exc()
+  else:
+    print "x / y =", result
+  finally:
+    print "we're in finally block"
+
+
+Functions
+=========
+
+::
+
+  def fname(*args, **kwargs):
+    # function body
+    return returnvalue
+
+No function/method overloading, but argument list can vary:
+
+.. class:: small
+
+  ::
+
+    def example(a, b=12, c=False):
+      return b if c else a
+
+    >>> example(42)
+    42
+    >>> example(1, 20)
+    1
+    >>> example(1, 2, True)
+    2
+    >>> example(1, c=True)
+    12
+
+Classes
+=======
+
+::
+
+  class MyClass(object):
+  
+    a = 42
+
+    def say_hello(self, name="World"):
+      print "Hello %s!" % name
+      return self.a
+
+    def __init__(self, a = None):
+      if a:
+        self.a = a
+
+  >>> i = MyClass(1)
+  >>> x = i.say_hello("Everyone")
+  Hello Everyone!
+  >>> x
+  1
+
+.. class:: handout
+
+  * no ``private`` attributes/methods (_, __)
+  * methods are bound to instances::
+    
+      >>> sh = a.say_hello
+      >>> sh
+      <bound method MyClass.say_hello of <...(a)...>>
+
+Inheritance
+===========
+
+* ``class A`` (old) <=> ``class A(object)`` (new)
+* Don't use the old way, esp. not when considering multiple inheritance.
+
+.. class:: small
+
+  ::
+
+    class MyClass(BC1, BC2, BC3):
+      
+      def __init__(self):
+        if wrongway:
+          BC1.__init__(self)
+          BC2.__init__(self)
+          BC3.__init__(self)
+        else:
+          super(MyClass, self).__init__()
+
+* method lookup order is well defined (BC1, BC1 bases, BC2, BC2 bases, ...)
+
+Modules, packages
+=================
+
+* Module = file
+* Package = directory containing ``__init__.py``
+
+Importing a module/package::
+
+  import os # the whole os package
+  import os.path # the os.path module
+  # the os.path.join function
+  import os.path.join as pathjoin
+  # everything imported into the current namespace
+  from sys import * # do not do this!
+
+Python 3
+========
+
+* some backward incompatible changes:
+  
+  - ``print`` statement -> ``print()`` function
+  - ``b"..."`` for bytes, ``"..."`` for (unicode) strings
+  - ``1/2 = 0.5``
+  - *classic* classes removed
+  - int/long -> int
+  - ... lot of smaller changes/improvemnets
+
+* *standardization* is not yet finalized
+* libraries migrate quite slowly
+
+Questions?
+==========
+
+Thanks!
+=======
+
