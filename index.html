@@ -338,7 +338,7 @@ ul.auto-toc {
 </div>
 <div id="footer">
 <h1>What is Python?</h1>
-<h2>© Gyuri, <del>euedge.com</del> CaS</h2>
+<h2>© Gyuri, <del>euedge.com</del> 𝙲 𝙾 𝙳 𝙴 & Ⓢ Ⓞ Ⓓ Ⓐ</h2>
 </div>
 </div>
 <div class="presentation">
@@ -351,7 +351,7 @@ ul.auto-toc {
 <tr><th class="docinfo-name">Author:</th>
 <td>Gyuri Horak</td></tr>
 <tr><th class="docinfo-name">Date:</th>
-  <td>2011-05-27, 2016-11-11 (OMG, 5.5 years...), 2018-12-05</td></tr>
+  <td>2011-05-27, 2016-11-11 (OMG, 5.5 years...), 2018-12-05, 2020-04-22</td></tr>
 </tbody>
 </table>
 <!-- Definitions of interpreted text roles (classes) for S5/HTML data. -->
@@ -408,6 +408,9 @@ Python basics presentation -->
 </ul>
 <ul class="incremental simple">
 <li>2018, Python 2 is still there... (EOL 2020)</li>
+</ul>
+<ul class="incremental simple">
+<li>2020, "almost dead", 2.7.18 released on April 20, 2020 ("last")</li>
 </ul>
 </div>
 <div class="slide" id="id2">
@@ -467,7 +470,9 @@ Python basics presentation -->
 <li>Video games (Battlefield 2, Crystal Space 3D engine, Civilization 4, ...)</li>
 <li>Movies (Industrial Light &amp; Magic, Walt Disney, Blender, ...)</li>
 <li>Science (NASA, National Weather Service, ...)</li>
-<li>...</li>
+</ul>
+<ul class="incremental simple">
+<li><b>MACHINE LEARNING, DATA SCIENCE</b></li>
 </ul>
 </div>
 <div class="slide" id="the-zen-of-python">
@@ -660,7 +665,7 @@ class MyClass(BC1, BC2, BC3):
       BC2.__init__(self)
       BC3.__init__(self)
     else:
-      super(MyClass, self).__init__()
+      super().__init__()
 </pre>
 <ul class="simple">
 <li>method lookup order is well defined (BC1, BC1 bases, BC2, BC2 bases, ...)</li>
